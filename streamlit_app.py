@@ -1,4 +1,9 @@
 import streamlit
+import pandas
+import requests
+import snowflake.connector
+from urllib.error import URLError #this import for error handling
+
 streamlit.title('My Parents New Healthy Diner')
 
 streamlit.header('🥣 Breakfast Favourites')
@@ -11,7 +16,7 @@ streamlit.text('🥑🍞 Avacado toast')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 #PANDAS-python package library
-import pandas
+#import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 
 #set index to pick as fruit name
@@ -30,7 +35,7 @@ fruit_choice=streamlit.text_input('what fruit would you like information about?'
 streamlit.write('The user entered', fruit_choice)
                                   
 #calling API from Streamlit
-import requests
+#import requests
 fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 #Let's Get the Fruityvice Data Looking a Little Nicer
@@ -43,7 +48,7 @@ streamlit.dataframe(fruityvice_normalized)
 streamlit.stop()
 
 #import snowflake connector
-import snowflake.connector
+#import snowflake.connector
 
 #Let's Query Our Trial Account Metadata
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
