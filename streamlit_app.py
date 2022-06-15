@@ -60,6 +60,18 @@ except URLError as e:
 #dataframe implies output to be displayed as table format
 #streamlit.dataframe(fruityvice_normalized)
 
+
+#Adding button
+def get_fruit_load_list():
+   with my_cnx.cursor() as my_cur:
+      my_cur.execute("select * from fruit_load_list")
+      return my_cur.fetchall()
+#adding main button logic
+if streamlit.button('GET FRUIT LOAD LIST'):
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_data_row = get_fruit_load_list()
+   streamlit.dataframe(my_data_row)
+
 #add before snowflake connector logic
 streamlit.stop()
 
@@ -77,16 +89,6 @@ streamlit.stop()
 #streamlit.dataframe(my_data_row )
 
 
-#Adding button
-def get_fruit_load_list():
-   with my_cnx.cursor() as my_cur:
-      my_cur.execute("select * from fruit_load_list")
-      return my_cur.fetchall()
-#adding main button logic
-if streamlit.button('GET FRUIT LOAD LIST'):
-   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-   my_data_row = get_fruit_load_list()
-   streamlit.dataframe(my_data_row)
 
       
    
