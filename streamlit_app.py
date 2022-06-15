@@ -26,7 +26,7 @@ streamlit.dataframe(fruits_to_show)
 
 #Add a Text Entry Box and Send the Input to Fruityvice as Part of the API Call
 streamlit.header('Fruityvice Fruit Advice!')
-fruit_choice=streamlit.text_input('what fruit would you like information about?'+'kiwi)
+fruit_choice=streamlit.text_input('what fruit would you like information about?'+'kiwi')
 streamlit.write('The user entered', fruit_choice)
                                   
 #calling API from Streamlit
