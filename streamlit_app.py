@@ -53,3 +53,12 @@ my_data_row = my_cur.fetchall() #fetch all rows
 streamlit.header("Fruit list load contains")
 streamlit.dataframe(my_data_row )
 
+#challenge
+#Add a Text Entry Box 
+add_my_fruit=streamlit.text_input('what fruit would you like information about?'+'jackfruit')
+streamlit.write('Thanks for adding', add_my_fruit)
+                                  
+#calling API from Streamlit
+import requests
+fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+
