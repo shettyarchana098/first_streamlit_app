@@ -31,7 +31,7 @@ streamlit.write('The user entered', fruit_choice)
                                   
 #calling API from Streamlit
 import requests
-fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
+fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 #Let's Get the Fruityvice Data Looking a Little Nicer
 #take the json response from above and make it normalized
