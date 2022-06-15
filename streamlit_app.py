@@ -67,14 +67,29 @@ streamlit.stop()
 #import snowflake.connector
 
 #Let's Query Our Trial Account Metadata
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
+#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#my_cur = my_cnx.cursor()
 #my_cur.execute("select current_user(), current_account(),current_region()")
-my_cur.execute("select * from fruit_load_list") #Query some data from snowflake table
-my_data_row = my_cur.fetchall() #fetch all rows
+#my_cur.execute("select * from fruit_load_list") #Query some data from snowflake table
+#my_data_row = my_cur.fetchall() #fetch all rows
 #streamlit.text("Hello from snowflake")
-streamlit.header("Fruit list load contains")
-streamlit.dataframe(my_data_row )
+#streamlit.header("Fruit list load contains")
+#streamlit.dataframe(my_data_row )
+
+
+#Adding button
+def get_fruit_load_list():
+   with my_cnx.cursor() as my_cur:
+      my_cur.execute("select * from fruit_load_list")
+      return my_cur.fetchall()
+#adding main button logic
+if streamlit.button('GET FRUIT LOAD LIST'):
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_data_row = get_fruit_load_list()
+   streamlit.dataframe(my_data_row)
+
+      
+   
 
 #challenge
 #Add a Text Entry Box 
