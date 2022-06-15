@@ -58,7 +58,6 @@ streamlit.dataframe(my_data_row )
 add_my_fruit=streamlit.text_input('what fruit would you like information about?')
 streamlit.write('Thanks for adding', add_my_fruit)
                                   
-#calling API from Streamlit
-import requests
-fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+#insert values from streamlit that apperas in snowflake db
+my_cur.execute("insert into fruit_load_list values('from streamlit')");
 
