@@ -55,7 +55,7 @@ streamlit.dataframe(my_data_row )
 
 #challenge
 #Add a Text Entry Box 
-add_my_fruit=streamlit.text_input('what fruit would you like information about?'+'jackfruit')
+add_my_fruit=streamlit.text_input('what fruit would you like information about?')
 streamlit.write('Thanks for adding', add_my_fruit)
                                   
 #calling API from Streamlit
